@@ -1,6 +1,6 @@
-import { Gauge } from "./components/Gauge";
-import { DashScreen, GarageScreen, MapScreen } from "./components/Phone";
+import { ScreenShot } from "./components/ScreenShot";
 import { StoreLinks } from "./components/StoreLinks";
+import { BrandLockup } from "./components/BrandLockup";
 import { Wordmark } from "./components/Wordmark";
 import { PLAY_URL } from "./links";
 
@@ -15,7 +15,7 @@ export function App() {
     <>
       <header className="header">
         <a className="header-logo" href="#topo" aria-label="RevCore">
-          <Wordmark />
+          <BrandLockup />
         </a>
         <nav className="header-nav" aria-label="Seções">
           {NAV.map((item) => (
@@ -63,7 +63,11 @@ export function App() {
             </dl>
           </div>
           <div className="hero-visual">
-            <DashScreen />
+            <ScreenShot
+              src="/screens/central.png"
+              alt="Central do RevCore: o carro, o desempenho e a comunidade no mesmo lugar"
+              eager
+            />
           </div>
         </section>
 
@@ -72,7 +76,8 @@ export function App() {
             index="01"
             kicker="Painel ao vivo"
             title="Veja o que o motor faz"
-            text="Um scanner ELM327 no Bluetooth manda os dados para o telefone em manômetros. A mesma leitura vai para a central do Android Auto, pra olhar de relance enquanto dirige."
+            text="Um scanner ELM327 no Bluetooth manda os dados para o telefone em manômetros. O painel tem conexão com o Android Auto: a mesma leitura aparece na central, pra olhar de relance enquanto dirige."
+            notice="O scanner se compra à parte. Não vem com o app e não faz parte do Premium. Só é necessário para ler o carro. O resto do RevCore continua funcionando."
             chips={[
               "Rotação",
               "Velocidade",
@@ -80,17 +85,25 @@ export function App() {
               "Pressão do coletor",
               "Tensão",
               "Carga e combustível",
+              "Android Auto",
             ]}
           />
-          <div className="tach-card">
-            <Gauge value={6900} display="6.900" unit="RPM · Redline" size={280} />
-            <p>Sem scanner, o painel roda simulado. A conexão real fica no Premium.</p>
+          <div className="feature-visual">
+            <ScreenShot
+              src="/screens/painel.png"
+              alt="Painel ao vivo do RevCore, com conta-giros, velocidade, pressão e temperatura"
+              note="Sem o scanner, o painel roda simulado. A leitura de verdade é do Premium. O aparelho, não."
+            />
           </div>
         </section>
 
         <section className="feature feature-flip" id="garagem">
           <div className="feature-visual">
-            <GarageScreen />
+            <ScreenShot
+              src="/screens/garagem.png"
+              alt="Garagem do RevCore, com a ficha do Nissan R32"
+              tilt="left"
+            />
           </div>
           <FeatureCopy
             index="02"
@@ -125,11 +138,14 @@ export function App() {
                 de você
               </>
             }
-            text="Mapa de quem está por perto, chat da região, conversa direta, feed de fotos, eventos e crews. Dentro de uma garagem segura, sua posição some do mapa dos outros."
-            chips={["Mapa ao vivo", "Chat da região", "Eventos", "Crews", "Alertas de via", "Modo direção"]}
+            text="Mapa de quem está por perto, chat da região, conversa direta, feed de fotos, eventos e crews. O mapa também tem conexão com o Android Auto. Dentro de uma garagem segura, sua posição some do mapa dos outros."
+            chips={["Mapa ao vivo", "Mapa no Android Auto", "Chat da região", "Eventos", "Crews", "Alertas de via", "Modo direção"]}
           />
           <div className="feature-visual">
-            <MapScreen />
+            <ScreenShot
+              src="/screens/feed.png"
+              alt="Feed do RevCore, com fotos de quem está por perto"
+            />
           </div>
         </section>
 
@@ -145,7 +161,7 @@ export function App() {
               <ul>
                 <li>Painel simulado</li>
                 <li>Até 2 carros na garagem</li>
-                <li>20 fotos por carro</li>
+                <li>2 fotos por carro</li>
                 <li>Comunidade completa</li>
               </ul>
             </article>
@@ -154,7 +170,7 @@ export function App() {
               <h3>Conexão real</h3>
               <ul>
                 <li>Leitura OBD2 de verdade pelo scanner</li>
-                <li>Painel no Android Auto</li>
+                <li>Painel e mapa no Android Auto</li>
                 <li>Mais espaço na garagem</li>
               </ul>
             </article>
@@ -179,7 +195,7 @@ export function App() {
   );
 }
 
-function FeatureCopy({ index, kicker, title, text, chips }) {
+function FeatureCopy({ index, kicker, title, text, notice, chips }) {
   return (
     <div className="feature-copy">
       <span className="feature-index" aria-hidden="true">
@@ -188,6 +204,7 @@ function FeatureCopy({ index, kicker, title, text, chips }) {
       <p className="eyebrow">{kicker}</p>
       <h2>{title}</h2>
       <p>{text}</p>
+      {notice ? <p className="notice">{notice}</p> : null}
       <ul className="chips">
         {chips.map((chip) => (
           <li key={chip}>{chip}</li>
