@@ -188,7 +188,8 @@ export function App() {
         <Wordmark />
         <p>
           O RevCore não incentiva nada fora da lei e não se responsabiliza pelo que cada pessoa faz
-          na estrada. Dirija com responsabilidade.
+          na estrada. Dirija com responsabilidade.{" "}
+          <a href="/privacidade">Privacidade</a>
         </p>
       </footer>
     </>

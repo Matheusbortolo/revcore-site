@@ -613,6 +613,110 @@ h1 em {
   text-align: right;
 }
 
+.footer p a {
+  color: var(--orange);
+}
+
+.header-back {
+  grid-column: 3;
+  justify-self: end;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.header-back:hover {
+  color: var(--orange);
+}
+
+.legal {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 48px 32px 80px;
+}
+
+.legal h1,
+.legal h2,
+.legal h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.legal h1 {
+  font-size: clamp(32px, 5vw, 44px);
+}
+
+.legal h2 {
+  margin-top: 40px;
+  font-size: 22px;
+}
+
+.legal h3 {
+  margin-top: 28px;
+  color: var(--orange);
+  font-size: 16px;
+}
+
+.legal p {
+  margin: 14px 0 0;
+  color: var(--text-secondary);
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+.legal-table-wrap {
+  margin-top: 16px;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.legal table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 520px;
+}
+
+.legal th,
+.legal td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.legal th {
+  background: var(--surface);
+  color: var(--orange);
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.legal td {
+  color: var(--text-secondary);
+  font-size: 16px;
+}
+
+.legal tr:last-child td {
+  border-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .legal {
+    padding: 32px 16px 64px;
+  }
+}
+
 @media (max-width: 900px) {
   .header {
     display: flex;
@@ -630,7 +734,8 @@ h1 em {
     padding-top: 12px;
   }
 
-  .header .btn {
+  .header .btn,
+  .header-back {
     margin-left: auto;
   }
 
